@@ -1,0 +1,32 @@
+# THE GOAL OF THIS PROJECT IS TO CREATE A BASIC SCRIPT TO FIND AND PLOT HISTORICAL AAPL PRICES ####
+
+## Call for Required Packages ####
+
+library('quantmod')
+
+## Set Start and End Dates for the Price History & AAPL as Ticker ####
+
+start_date <- as.Date("2015-01-01")
+
+end_date <- Sys.Date()
+
+ticker <- 'AAPL'
+
+## Call Stock info from Yahoo Finance #### 
+
+getSymbols(ticker,
+           from = start_date,
+           to = end_date,
+           src = "yahoo"
+           )
+
+## Plot Price History ####
+
+plot(c(AAPL$AAPL.Open,AAPL$AAPL.Close) ,
+     main = "AAPL Price History" ,
+     xlab = 'Date' , 
+     ylab = 'Price', 
+     na.rm = TRUE,
+     col = 'green4', #Color of line to green4 
+     bg = 'gray' #Set background color to grey/gray
+     )
